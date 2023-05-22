@@ -1,0 +1,55 @@
+h1 {
+    color:darkblue;
+    opacity: 0.9;
+    border-image-width: 0fr;
+}
+h2 {
+    color:blue;
+    opacity: 0.7;
+}
+body {
+    background-image: url("pexels-stephan-seeber-1261728.jpg");
+    background-size:cover;
+    background-repeat:no-repeat;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+audio {
+    color:blue;
+}
+p {
+    color:black;
+    opacity: 0.8;
+    text-align:center ;
+}
+html,body {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 200;
+    font: display 90px;
+}
+::backdrop {
+    text-shadow: 0in;
+}
+background-color {
+    color: aquamarine;
+}
+h3 {
+    color:magenta;
+}
+img {
+    align-content: center;
+}
+button {
+    color: green;
+    font-weight:bold;
+    display:inline-block;
+    font-size: 20px;
+    font-family: Arial;
+    padding: 20px,30px;
+    cursor:pointer;
+    border: none;
+    letter-spacing: 3px;
+
+}
