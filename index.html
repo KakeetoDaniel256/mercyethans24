@@ -3,192 +3,254 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Enhanced Blog</title>
+    <title>BetPawa Clone</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
-            color: #333;
         }
 
         header {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
+            background-color: #0b3d91;
+            color: white;
             padding: 1em 0;
+            text-align: center;
         }
 
         header h1 {
             margin: 0;
+            font-size: 2em;
         }
 
-        main {
-            padding: 2em;
+        nav {
+            background-color: #2a52be;
+            padding: 0.5em 0;
+            text-align: center;
         }
 
-        .post {
-            background-color: #fff;
-            margin-bottom: 2em;
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5em 1em;
+            display: inline-block;
+        }
+
+        nav a:hover {
+            background-color: #0b3d91;
+        }
+
+        .banner {
+            background-color: #d1e0e0;
+            padding: 2em 1em;
+            text-align: center;
+        }
+
+        .banner h2 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+
+        .content {
+            padding: 2em 1em;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card {
+            background-color: white;
+            margin: 1em;
+            padding: 1em;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: calc(33% - 2em);
+        }
+
+        .card h3 {
+            margin-top: 0;
+        }
+
+        .like-btn, .comment-btn, .share-btn {
+            cursor: pointer;
+            color: #2a52be;
+            border: none;
+            background: none;
+            margin-right: 10px;
+        }
+
+        .like-btn:hover, .comment-btn:hover, .share-btn:hover {
+            text-decoration: underline;
+        }
+
+        .comments-section {
+            margin-top: 1em;
+        }
+
+        .comment {
+            background-color: #f4f4f4;
+            padding: 0.5em;
+            margin-bottom: 0.5em;
+            border-radius: 5px;
+        }
+
+        footer {
+            background-color: #2a52be;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+        }
+
+        .input-group {
+            display: flex;
+            margin-bottom: 1em;
+        }
+
+        .input-group input {
+            flex: 1;
+            padding: 0.5em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 0.5em;
+        }
+
+        .input-group button {
+            padding: 0.5em 1em;
+            border: none;
+            background-color: #2a52be;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .input-group button:hover {
+            background-color: #0b3d91;
+        }
+
+        .share-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
             padding: 1em;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
-        .post h2 {
-            margin-top: 0;
-        }
-
-        .post .interactions {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .share-popup button {
             margin-top: 1em;
-        }
-
-        .post .interactions button {
-            padding: 0.5em 1em;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .post .interactions .like-button {
-            background-color: #007bff;
-            color: #fff;
-        }
-
-        .post .interactions .share-button {
-            background-color: #28a745;
-            color: #fff;
-        }
-
-        .post .comments {
-            margin-top: 1em;
-            padding-left: 1em;
-            border-left: 3px solid #ccc;
-        }
-
-        .comment-form {
-            margin-top: 1em;
-        }
-
-        .comment-form input {
-            width: calc(100% - 2em);
-            padding: 0.5em;
-            margin-bottom: 0.5em;
-        }
-
-        .comment-form button {
-            padding: 0.5em 1em;
-            border: none;
-            border-radius: 5px;
-            background-color: #007bff;
-            color: #fff;
-            cursor: pointer;
-        }
-
-        footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 1em 0;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Welcome to My Enhanced Blog</h1>
+        <h1>BetPawa Clone</h1>
     </header>
     
-    <main>
-        <article id="post-1" class="post">
-            <h2>First Blog Post</h2>
-            <p>This is the content of my first blog post. It's a great day to start a blog!</p>
-            <div class="interactions">
-                <span id="likes-1">Likes: 0</span>
-                <button class="like-button" onclick="likePost('likes-1')">Like</button>
-                <button class="share-button" onclick="sharePost('First Blog Post', 'This is the content of my first blog post. It\'s a great day to start a blog!')">Share</button>
-                <button onclick="toggleComments('comments-1')">Show/Hide Comments</button>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Sports</a>
+        <a href="#">Live</a>
+        <a href="#">Casino</a>
+        <a href="#">Promotions</a>
+        <a href="#">Contact</a>
+    </nav>
+    
+    <div class="banner">
+        <h2>Welcome to the Best Betting Experience</h2>
+    </div>
+    
+    <main class="content">
+        <div class="card" id="post-1">
+            <h3>Featured Match</h3>
+            <p>Catch the latest match live and place your bets now!</p>
+            <button class="like-btn" onclick="likePost('post-1')">Like <span id="like-count-post-1">0</span></button>
+            <button class="comment-btn" onclick="toggleComments('comments-post-1')">Comment</button>
+            <button class="share-btn" onclick="sharePost('post-1')">Share</button>
+            <div class="comments-section" id="comments-post-1" style="display: none;">
+                <div class="input-group">
+                    <input type="text" id="comment-input-post-1" placeholder="Add a comment">
+                    <button onclick="addComment('post-1')">Submit</button>
+                </div>
+                <div id="comment-list-post-1"></div>
             </div>
-            <div id="comments-1" class="comments" style="display: none;">
-                <p><strong>Commenter 1:</strong> Great post!</p>
-                <p><strong>Commenter 2:</strong> Looking forward to more content!</p>
+        </div>
+        
+        <div class="card" id="post-2">
+            <h3>Upcoming Events</h3>
+            <p>Don't miss out on our upcoming events. Stay tuned!</p>
+            <button class="like-btn" onclick="likePost('post-2')">Like <span id="like-count-post-2">0</span></button>
+            <button class="comment-btn" onclick="toggleComments('comments-post-2')">Comment</button>
+            <button class="share-btn" onclick="sharePost('post-2')">Share</button>
+            <div class="comments-section" id="comments-post-2" style="display: none;">
+                <div class="input-group">
+                    <input type="text" id="comment-input-post-2" placeholder="Add a comment">
+                    <button onclick="addComment('post-2')">Submit</button>
+                </div>
+                <div id="comment-list-post-2"></div>
             </div>
-            <div class="comment-form">
-                <input type="text" id="comment-input-1" placeholder="Add a comment">
-                <button onclick="addComment('comments-1', 'comment-input-1')">Add Comment</button>
-            </div>
-        </article>
-
-        <article id="post-2" class="post">
-            <h2>Second Blog Post</h2>
-            <p>This is the content of my second blog post. Still excited about blogging!</p>
-            <div class="interactions">
-                <span id="likes-2">Likes: 0</span>
-                <button class="like-button" onclick="likePost('likes-2')">Like</button>
-                <button class="share-button" onclick="sharePost('Second Blog Post', 'This is the content of my second blog post. Still excited about blogging!')">Share</button>
-                <button onclick="toggleComments('comments-2')">Show/Hide Comments</button>
-            </div>
-            <div id="comments-2" class="comments" style="display: none;">
-                <p><strong>Commenter 3:</strong> Another great post!</p>
-                <p><strong>Commenter 4:</strong> Keep it up!</p>
-            </div>
-            <div class="comment-form">
-                <input type="text" id="comment-input-2" placeholder="Add a comment">
-                <button onclick="addComment('comments-2', 'comment-input-2')">Add Comment</button>
-            </div>
-        </article>
+        </div>
     </main>
     
-    <footer>
-        <p>&copy; 2024 My Enhanced Blog. All rights reserved.</p>
+    <footer class="footer">
+        <p>&copy; 2024 BetPawa Clone. All rights reserved.</p>
     </footer>
 
+    <div class="share-popup" id="share-popup">
+        <p>Share this post via:</p>
+        <button onclick="copyLink()">Copy Link</button>
+        <button onclick="closeSharePopup()">Close</button>
+    </div>
+
     <script>
-        function toggleComments(id) {
-            const comments = document.getElementById(id);
-            if (comments.style.display === "none") {
-                comments.style.display = "block";
-            } else {
-                comments.style.display = "none";
-            }
+        function likePost(postId) {
+            const likeCountElement = document.getElementById(`like-count-${postId}`);
+            let likeCount = parseInt(likeCountElement.textContent, 10);
+            likeCount += 1;
+            likeCountElement.textContent = likeCount;
         }
 
-        function addComment(commentsId, inputId) {
-            const comments = document.getElementById(commentsId);
-            const input = document.getElementById(inputId);
-            const newComment = document.createElement('p');
-            newComment.innerHTML = `<strong>You:</strong> ${input.value}`;
-            comments.appendChild(newComment);
-            input.value = '';
+        function toggleComments(commentSectionId) {
+            const commentsSection = document.getElementById(commentSectionId);
+            commentsSection.style.display = commentsSection.style.display === "none" ? "block" : "none";
         }
 
-        function likePost(likesId) {
-            const likes = document.getElementById(likesId);
-            let currentLikes = parseInt(likes.textContent.split(': ')[1]);
-            likes.textContent = `Likes: ${currentLikes + 1}`;
+        function addComment(postId) {
+            const commentInput = document.getElementById(`comment-input-${postId}`);
+            const commentText = commentInput.value.trim();
+            if (!commentText) return;
+
+            const commentList = document.getElementById(`comment-list-${postId}`);
+            const newComment = document.createElement("div");
+            newComment.className = "comment";
+            newComment.textContent = commentText;
+
+            commentList.appendChild(newComment);
+            commentInput.value = "";
         }
 
-        function sharePost(title, content) {
-            const shareData = {
-                title: title,
-                text: content,
-                url: window.location.href
-            };
-            if (navigator.share) {
-                navigator.share(shareData).then(() => {
-                    console.log('Post shared successfully');
-                }).catch(err => {
-                    console.error('Error sharing post', err);
-                });
-            } else {
-                alert('Sharing not supported in this browser');
-            }
+        function sharePost(postId) {
+            const sharePopup = document.getElementById('share-popup');
+            sharePopup.style.display = 'block';
+        }
+
+        function closeSharePopup() {
+            const sharePopup = document.getElementById('share-popup');
+            sharePopup.style.display = 'none';
+        }
+
+        function copyLink() {
+            const dummy = document.createElement('input');
+            const text = window.location.href;
+            document.body.appendChild(dummy);
+            dummy.value = text;
+            dummy.select();
+            document.execCommand('copy');
+            document.body.removeChild(dummy);
+            alert('Link copied to clipboard');
         }
     </script>
 </body>
