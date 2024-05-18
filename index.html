@@ -1,51 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
-    <link href="style.css" rel="stylesheet">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=>>, initial-scale=1.0">
-    <title>MERCYETHANS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Enhanced Blog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1em 0;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        main {
+            padding: 2em;
+        }
+
+        .post {
+            background-color: #fff;
+            margin-bottom: 2em;
+            padding: 1em;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .post h2 {
+            margin-top: 0;
+        }
+
+        .post .interactions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1em;
+        }
+
+        .post .interactions button {
+            padding: 0.5em 1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .post .interactions .like-button {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .post .interactions .share-button {
+            background-color: #28a745;
+            color: #fff;
+        }
+
+        .post .comments {
+            margin-top: 1em;
+            padding-left: 1em;
+            border-left: 3px solid #ccc;
+        }
+
+        .comment-form {
+            margin-top: 1em;
+        }
+
+        .comment-form input {
+            width: calc(100% - 2em);
+            padding: 0.5em;
+            margin-bottom: 0.5em;
+        }
+
+        .comment-form button {
+            padding: 0.5em 1em;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1em 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
 </head>
 <body>
-    <h1>I LOVE YOU SO MUCH MERCY</h1>
-    <img src="data:image/png;base64,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" />
-    <H2>YOU ARE THE QUEEN OF MY HEART</H2>
-<audio controls>
-    <source src="https://www.howwe.ug/_fxs_/_upls_/_sngs_/liam_voice-promise.mp3?_=1" type="audio/mpeg">
-</audio>
-<p>This is my promise for you</p>
-<p>First time nnyabo</p>
-<p>Ey’okukulaba mu sportswear eya yellow</p>
-<p>Namanyirawo I knew you will be my fellow</p>
-<p>Alinnwanira entalo okuva ku zero</p>
-<p>Baby ondaze amaanyi</p>
-<p>Obaddewo mu bigambo tondese</p>
-<p>Onnwanidde, ondaze amaanyi</p>
-<p>Otaddewo omugongo bayuze</p>
-<p>Onnwanidde, ondaze amaanyi</p>
-<h2>I DEDICATE THAT SONG TO YOU MY QUEEN THANKS FOR EVERYTHING LOVE</h2>
-<audio controls>
-    <source src="https://www.howwe.ug/_fxs_/_upls_/_sngs_/aliba-omu-naava-grey-howwe-1459430659.mp3?_=1" type="audio/mpeg">
-</audio>
-<audio controls>
-    <source src="https://www.howwe.ug/_fxs_/_upls_/_sngs_/liam_voice-olwanye.mp3?_=1" type="audio/mpeg">
-</audio>
-<audio controls>
-    <source src="Westlife-Queen-Of-My-Heart-Luvmp.com_.mp3" type="audio/mpeg">
-</audio>
-<img src="https://boaz.eu-central-1.linodeobjects.com/upload/photos/2023/05/Fl8KANIxPhFUGf6QJBxk_22_5c7a32843b88af521bb6810eb9eb75e5_image_small.jpg" />
-<video controls>
-    <source src="VID-20230519-WA0006.mp4" width="320" height="240">
-    video is not supported 
-</video>
-<h3>
-    I really love the fact that am deeply in love with you my queen. 
-    I will say this loud i really love you so much my queen 
-    <strong>I LOVE YOU MERCY</strong>
-    <a href="https://api.whatsapp.com/send?phone=+256709824570" target="_blank">
-    <button class="hover">WHATSAPP</button>
-    </a>
-</h3>
+    <header>
+        <h1>Welcome to My Enhanced Blog</h1>
+    </header>
+    
+    <main>
+        <article id="post-1" class="post">
+            <h2>First Blog Post</h2>
+            <p>This is the content of my first blog post. It's a great day to start a blog!</p>
+            <div class="interactions">
+                <span id="likes-1">Likes: 0</span>
+                <button class="like-button" onclick="likePost('likes-1')">Like</button>
+                <button class="share-button" onclick="sharePost('First Blog Post', 'This is the content of my first blog post. It\'s a great day to start a blog!')">Share</button>
+                <button onclick="toggleComments('comments-1')">Show/Hide Comments</button>
+            </div>
+            <div id="comments-1" class="comments" style="display: none;">
+                <p><strong>Commenter 1:</strong> Great post!</p>
+                <p><strong>Commenter 2:</strong> Looking forward to more content!</p>
+            </div>
+            <div class="comment-form">
+                <input type="text" id="comment-input-1" placeholder="Add a comment">
+                <button onclick="addComment('comments-1', 'comment-input-1')">Add Comment</button>
+            </div>
+        </article>
+
+        <article id="post-2" class="post">
+            <h2>Second Blog Post</h2>
+            <p>This is the content of my second blog post. Still excited about blogging!</p>
+            <div class="interactions">
+                <span id="likes-2">Likes: 0</span>
+                <button class="like-button" onclick="likePost('likes-2')">Like</button>
+                <button class="share-button" onclick="sharePost('Second Blog Post', 'This is the content of my second blog post. Still excited about blogging!')">Share</button>
+                <button onclick="toggleComments('comments-2')">Show/Hide Comments</button>
+            </div>
+            <div id="comments-2" class="comments" style="display: none;">
+                <p><strong>Commenter 3:</strong> Another great post!</p>
+                <p><strong>Commenter 4:</strong> Keep it up!</p>
+            </div>
+            <div class="comment-form">
+                <input type="text" id="comment-input-2" placeholder="Add a comment">
+                <button onclick="addComment('comments-2', 'comment-input-2')">Add Comment</button>
+            </div>
+        </article>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 My Enhanced Blog. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleComments(id) {
+            const comments = document.getElementById(id);
+            if (comments.style.display === "none") {
+                comments.style.display = "block";
+            } else {
+                comments.style.display = "none";
+            }
+        }
+
+        function addComment(commentsId, inputId) {
+            const comments = document.getElementById(commentsId);
+            const input = document.getElementById(inputId);
+            const newComment = document.createElement('p');
+            newComment.innerHTML = `<strong>You:</strong> ${input.value}`;
+            comments.appendChild(newComment);
+            input.value = '';
+        }
+
+        function likePost(likesId) {
+            const likes = document.getElementById(likesId);
+            let currentLikes = parseInt(likes.textContent.split(': ')[1]);
+            likes.textContent = `Likes: ${currentLikes + 1}`;
+        }
+
+        function sharePost(title, content) {
+            const shareData = {
+                title: title,
+                text: content,
+                url: window.location.href
+            };
+            if (navigator.share) {
+                navigator.share(shareData).then(() => {
+                    console.log('Post shared successfully');
+                }).catch(err => {
+                    console.error('Error sharing post', err);
+                });
+            } else {
+                alert('Sharing not supported in this browser');
+            }
+        }
+    </script>
 </body>
 </html>
